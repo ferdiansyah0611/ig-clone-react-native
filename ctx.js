@@ -5,7 +5,7 @@ const ctx = createContext({
 })
 
 export const VALUE = {
-  auth: true,
+  auth: false,
   post: [
     {
       id: 0,

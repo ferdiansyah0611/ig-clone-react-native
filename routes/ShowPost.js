@@ -63,7 +63,7 @@ export default function ShowPost({route}){
         <Box p="2">
           <HStack>
             <Box flex="1">
-            <Input value={input} onChangeText={setInput} placeholder="Type Here"/>
+              <Input value={input} onChangeText={setInput} placeholder="Type Here"/>
             </Box>
             <IconButton
               onPress={() => {

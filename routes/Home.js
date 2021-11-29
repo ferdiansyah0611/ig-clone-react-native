@@ -5,10 +5,13 @@ import {
 } from 'native-base'
 import ctx from '../ctx'
 
+import Appbar from '../components/Appbar'
+
 export default function Home(){
   const context = React.useContext(ctx)
   return(
     <>
+      <Appbar/>
       <ScrollView>
         {
           context.post.map((d, i) => (

@@ -7,14 +7,15 @@ import {
 import { Provider as PaperProvider } from 'react-native-paper'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
-import Appbar from './components/Appbar'
 import Bottombar from './components/Bottombar'
 
 import HomeScreen from './routes/Home'
 import ProfileScreen from './routes/Profile'
 import ShowPost from './routes/ShowPost'
 import Login from './routes/Login'
+import SearchScreen from './routes/Search'
 
 import ctx, {VALUE} from './ctx'
 
@@ -34,6 +35,18 @@ export default class App extends React.Component{
       set: (data) => this.setState(data)
     }
   }
+  componentDidMount(){
+    let checkUser = async () => {
+      const value = await AsyncStorage.getItem('@user')
+      if(value){
+        this.setState({
+          auth: JSON.parse(value)
+        })
+      }
+    }
+    
+    checkUser()
+  }
   render(){
     return(
       <View style={styles.container}>
@@ -43,12 +56,12 @@ export default class App extends React.Component{
             {
               this.state.auth ?
                 <NavigationContainer>
-                  <Appbar/>
                   <Stack.Navigator screenOptions={{
                     headerShown: false
                   }}>
                     <Stack.Screen name="Home" component={HomeScreen} />
                     <Stack.Screen name="Profile" component={ProfileScreen} />
+                    <Stack.Screen name="Search" component={SearchScreen} />
                     <Stack.Screen
                       name="UserProfile"
                       component={ProfileScreen}

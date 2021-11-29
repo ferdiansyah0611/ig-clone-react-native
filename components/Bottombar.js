@@ -8,7 +8,6 @@ import { useNavigation } from '@react-navigation/native'
 
 export default function Bottombar(){
   const navigation = useNavigation()
-
   return(
     <View>
       <Box bg="black" borderColor="#2b2b2b" borderTopWidth="0.5">
@@ -21,7 +20,7 @@ export default function Bottombar(){
             </Box>
           </Pressable>
           <Box p="4" flex="1">
-            <Pressable onPress={() => {}}>
+            <Pressable onPress={() => navigation.navigate('Search')}>
               <Center>
                 <AntDesign name="search1" size={24} color="white" />
               </Center>
